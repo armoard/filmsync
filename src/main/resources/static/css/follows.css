@@ -1,0 +1,135 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom, #1F262D 0%, #191F24 50%, #171B20 75%, #14181C 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #EAE4E4;
+}
+
+.container {
+  width: 90em;
+  height: 35em;
+  overflow-y: auto;
+  background: #1E1E1F;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #EAE4E4;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination a {
+  color: #FFC107;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
+
+.pagination .page-info {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.user-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-items: start;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #252525;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 250px;
+  margin: 0;
+}
+
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #161616;
+  margin-bottom: 10px;
+}
+
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: bold;
+  color: #EAE4E4;
+  margin-bottom: 5px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.username:hover {
+  text-decoration: underline;
+}
+
+.description {
+  font-size: 14px;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #FFC107;
+  border-radius: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #1E1E1F;
+}

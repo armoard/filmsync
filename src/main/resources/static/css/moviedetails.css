@@ -1,0 +1,296 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 20px;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(
+            to bottom,
+            #1F262D 0%,
+            #191F24 50%,
+            #171B20 75%,
+            #14181C 100%
+    );
+    color: #EAE4E4;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+#movie-poster {
+    padding: 80px 20px;
+    margin-left: 50px;
+    flex-shrink: 0;
+    display: block;
+    text-align: center;
+
+}
+
+#movie-poster img {
+    margin-bottom: 10px;
+    transform: none;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    max-height: 400px;
+    border: 5px solid #252525;
+    border-radius: 10px;
+}
+
+.favorite-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    color: #EAE4E4;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-container.favorited {
+    color: #FF0000;
+}
+
+.favorite-container i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.favorite-container:hover {
+    transform: scale(1.1);
+}
+
+
+#movie-summary {
+    transform: translateY(35px);
+    padding: 20px;
+    max-width: 400px;
+    margin-right: 20px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+#movie-summary h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+
+}
+#movie-summary h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+
+}
+
+#movie-summary p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#movie-summary p::-webkit-scrollbar {
+    width: 8px;
+}
+
+#movie-summary p::-webkit-scrollbar-thumb {
+    background-color: #50518F;
+    border-radius: 4px;
+}
+
+#movie-summary p::-webkit-scrollbar-thumb:hover {
+    background-color: #7376C6;
+}
+
+#movie-summary p::-webkit-scrollbar-track {
+    background-color: #1b1f23;
+    border-radius: 4px;
+}
+
+#movie-rating {
+    margin-top: 5px;
+    text-align: left;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    font-size: 24px;
+    transition: color 0.2s;
+}
+.star.highlight {
+    color: yellow;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#user-review {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    text-align: left;
+    box-sizing: border-box;
+    background: #E7DEDE;
+    border-radius: 20px;
+}
+
+
+#submit-button,#edit-button,#submit-changes-button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    background: #292A2F;
+    color: #EAE4E4;
+    border-radius: 20px;
+    border: none;
+    font-weight: 550;
+    transition: background-color 0.3s;
+}
+
+#submit-button:hover,
+#edit-button:hover,
+#submit-changes-button:hover {
+    background-color: #6c6fb0;
+}
+
+#error-message-container {
+    transform: translateY(-45px);
+    color: #ff0000;
+    font-style: italic;
+    font-size: 1em;
+    display: block;
+}
+
+#error-message {
+    margin: 0;
+    padding: 0;
+}
+
+#friends-reviews {
+    transform: translateY(70px);
+    width: 100%;
+    max-width: 400px;
+    min-height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #1E1E1F;
+    border: 5px solid #252525;
+    margin-right: 30px;
+}
+
+#friends-reviews h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#friends-reviews ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+#friends-reviews li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    width: 300px;
+}
+
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.author-info p {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+}
+
+.author-info .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+
+#friends-reviews p {
+    margin: 2px 0;
+    font-size: 0.8em;
+}
+
+
+.rating {
+
+    font-weight: bold;
+    color: #ffcc66;
+}
+
+
+#friends-reviews li > p {
+    text-align: left;
+    margin-left: 5px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    max-width: 200px;
+    line-height: 1.2em;
+}
+
+.hidden {
+    display: none;
+}
+
+#friends-reviews h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#no-reviews-message {
+    text-align: center;
+    margin: 20px auto;
+    font-style: italic;
+    color: #aaa;
+    font-size: 16px;
+}
+

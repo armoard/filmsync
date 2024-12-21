@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="/css/all-reviews.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="reviews-container">
+  <h1>Reviews by <span th:text="${username}"></span></h1>
+
+
+  <div th:each="review : ${reviews}" class="review">
+    <a th:href="@{|/review/${review.reviewId}/comments|}" class="review-link">
+      <div class="review-poster">
+        <img th:src="@{|https://image.tmdb.org/t/p/w200/${review.posterPath}|}" alt="Movie Poster">
+      </div>
+      <div class="review-details">
+        <h2 th:text="${review.movieTitle}">Movie Title</h2>
+        <p class="review-rating"><span th:text="${review.reviewRating}">5</span>/5 <span>★</span>  </p>
+        <p class="review-content" th:text="${review.reviewContent}">Review Content</p>
+        <p class="review-date">Created at: <span th:text="${review.createdAt}">Date</span></p>
+      </div>
+    </a>
+  </div>
+
+  <div class="pagination">
+    <button th:if="${currentPage > 0}"
+            th:onclick="'window.location.href=\'/users/' + ${username} + '/reviews?page=' + (${currentPage - 1})'">
+      Previous
+    </button>
+    <span>Page <span th:text="${currentPage + 1}"></span> of <span th:text="${totalPages}"></span></span>
+    <button th:if="${currentPage + 1 < totalPages}"
+            th:onclick="'window.location.href=\'/users/' + ${username} + '/reviews?page=' + (${currentPage + 1})'">
+      Next
+    </button>
+  </div>
+</div>
+</body>
+</html>

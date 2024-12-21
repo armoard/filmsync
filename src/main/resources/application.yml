@@ -1,0 +1,68 @@
+# Server configuration
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_DDL_AUTO}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SUPPORT_EMAIL}
+    password: ${APP_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 20MB
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.example.demo1: DEBUG
+
+tmdb:
+  api:
+    key: ${TMDB_API_KEY}
+
+cloud:
+  aws:
+    region:
+      static: sa-east-1
+    credentials:
+      access-key: ${AWS_ACCESS_KEY_ID}
+      secret-key: ${AWS_SECRET_ACCESS_KEY}
+    s3:
+      enabled: false
+      bucket: moviesfmbucket
+    stack:
+      auto: false
+custom:
+  profile:
+    default-url: "https://moviesfmbucket.s3.sa-east-1.amazonaws.com/profile_default.jpg"

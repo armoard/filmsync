@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movie Details</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/moviedetails.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div id="movie-poster">
+    <img th:src="'https://image.tmdb.org/t/p/w500/' + ${movieDetails.poster_path}" alt="Movie Poster">
+    <div id="favorite-container" class="favorite-container"
+         th:classappend="${movieState.isFavorite} ? 'favorited' : ''">
+        <i class="fa-solid fa-heart"></i>
+        <span th:text="${movieState.isFavorite} ? 'Unmark as Favorite' : 'Mark as Favorite'"></span>
+    </div>
+</div>
+
+<div id="movie-summary">
+    <h2 th:text="${movieDetails.title}">Title</h2>
+    <h1><span th:text="${movieDetails.release_date}">Release Date</span></h1>
+    <p th:text="${movieDetails.overview}">Overview</p>
+
+
+    <div id="movie-rating">
+
+        <div class="stars" th:attr="data-rating=${movieState.reviewRating}">
+            <span class="star empty" data-value="1">★</span>
+            <span class="star empty" data-value="2">★</span>
+            <span class="star empty" data-value="3">★</span>
+            <span class="star empty" data-value="4">★</span>
+            <span class="star empty" data-value="5">★</span>
+        </div>
+
+        <form id="review-form">
+
+            <textarea id="user-review" placeholder="Write your review here..." rows="6"
+                      th:text="${movieState.reviewContent}"
+                      th:disabled="${movieState.isReviewed}">Write your review...</textarea>
+
+            <button id="edit-button" type="button"
+                    th:if="${movieState.isReviewed}" onclick="enableEdit()">Edit</button>
+
+            <button id="submit-button" type="button"
+                    th:if="${!movieState.isReviewed}" onclick="submitReview(event)">
+                Submit
+            </button>
+
+            <button id="submit-changes-button" type="button"
+                    th:if="${movieState.isReviewed}" onclick="submitReviewChanges()">Submit Changes</button>
+
+            <div id="error-message-container" class="hidden">
+                <p id="error-message"></p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div id="friends-reviews">
+    <h3>Some of your friends' opinions</h3>
+    <ul>
+        <li th:each="review : ${friendsReviews}">
+            <div class="author-info">
+                <img th:src="${review.profileUrl}" alt="Author's profile picture" class="profile-pic">
+                <p>
+                    <strong th:text="${review.authorUsername}">Author</strong>
+                </p>
+            </div>
+
+            <p class="rating" th:text="${review.rating + '/5'}">4/5</p>
+            <p th:text="${review.content}">Review Content</p>
+        </li>
+    </ul>
+    <p th:if="${#lists.isEmpty(friendsReviews)}" id="no-reviews-message">
+        None of your friends has written a review. Be the first!.
+    </p>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/moviedetails.js"></script>
+</html>

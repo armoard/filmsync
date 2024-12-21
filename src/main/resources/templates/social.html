@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/social.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+
+    <div class="text-wrapper">
+        <h1>Connect and Explore</h1>
+        <h3>Looking for someone who loves that obscure indie movie as much as you do? Start here.</h3>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a user..." />
+    </div>
+
+
+    <div id="userList" class="profiles-grid">
+
+        <ul>
+            <li th:each="user : ${users}">
+                <div class="profile-container">
+                    <img th:src="${user.profileUrl}" alt="Profile Picture" class="profile-picture" />
+                    <div class="profile-details">
+                        <div class="name-button">
+                            <span th:text="${user.username}" class="profile-username"></span>
+                            <a th:href="'/user/' + ${user.username}" class="profile-button">Go to Profile</a>
+                        </div>
+                        <p th:text="${user.description}" class="profile-description"></p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="searchResults" style="display: none;"></div>
+</div>
+
+<script src="/js/socialsearch.js"></script>
+</body>
+</html>

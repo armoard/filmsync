@@ -1,0 +1,144 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #1F262D 0%,
+        #191F24 50%,
+        #171B20 75%,
+        #14181C 100%
+    );
+    color: #EAE4E4;
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.text-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #EAE4E4;
+}
+
+.text-wrapper h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: 'Lora', serif;
+}
+
+.text-wrapper h3 {
+    font-size: 1.2em;
+    font-weight: 300;
+    font-family: 'Lora', serif;
+    color: #C5C6C7;
+    margin: 0 auto;
+    max-width: 700px;
+    line-height: 1.6;
+}
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profiles-grid ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profiles-grid ul li {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 5px solid #161616;
+    background-color: #1b1f23;
+}
+
+
+.profile-container {
+    display: flex;
+    gap: 15px;
+
+}
+
+.name-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+}
+
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.profile-details {
+    flex: 1;
+    text-align: left;
+}
+
+.profile-username {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.profile-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+
+.profile-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #292A2F;
+    color: #EAE4E4;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 550;
+    transition: background-color 0.3s;
+}
+.profile-button:hover {
+    background-color: #6c6fb0;
+}
+

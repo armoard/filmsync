@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/welcome.css">
+    <link href="https://fonts.cdnfonts.com/css/trajan-pro" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="home-info">
+    <header>
+        <div class="button-group">
+            <button id="login">SIGN IN</button>
+        </div>
+    </header>
+    <h2>Welcome to FilmSync!</h2>
+    <p><strong>Discover movies, track what you've watched, and share your favorites with friends. Join a community of film lovers and start your cinematic journey today.</strong></p>
+    <button type="button" id="create-account">Get Started, it's free!</button>
+</div>
+
+<dialog id="login-dialog">
+    <form method="dialog">
+        <h3><strong>Login</strong></h3>
+
+        <div class="input-group">
+            <label for="login-email">Email</label>
+            <input type="text" id="login-email" name="email">
+            <span id="login-email-error" class="error-message"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password">
+            <span id="login-password-error" class="error-message"></span>
+        </div>
+
+        <button type="button" onclick="handleLogin()">Login</button>
+        <div id="login-spinner" class="loading-spinner">
+            <div class="loader"></div>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="verification-dialog" class="dialog-animate">
+    <form method="dialog" onsubmit="event.preventDefault(); handleVerification();">
+        <h3><strong>Verify Your Account</strong></h3>
+
+        <div class="input-group">
+            <label for="verification-code">Enter Verification Code</label>
+            <input type="text" id="verification-code" name="verificationCode" required>
+            <span id="verification-error" class="error-message"></span>
+        </div>
+
+        <button type="submit" id="send-verification-button">Send</button>
+        <div id="verification-spinner" class="loading-spinner">
+            <div class="loader"></div>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="register-dialog">
+    <form method="dialog" onsubmit="event.preventDefault(); handleRegister();">
+        <h3><strong>Create Account</strong></h3>
+
+        <div class="input-group">
+            <label for="register-email">Email</label>
+            <input type="text" id="register-email" name="email">
+            <span id="email-error" class="error-message"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="register-username">Username</label>
+            <input type="text" id="register-username" name="username">
+            <span id="username-error" class="error-message"></span>
+        </div>
+
+        <div class="input-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" name="password">
+            <span id="password-error" class="error-message"></span>
+        </div>
+
+        <button type="submit" id="register-button">Sign up</button>
+        <div id="register-spinner" class="loading-spinner">
+            <div class="loader"></div>
+        </div>
+    </form>
+</dialog>
+
+
+
+<script src="/js/welcome.js"></script>
+</body>
+</html>
