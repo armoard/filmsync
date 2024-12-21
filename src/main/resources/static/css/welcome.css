@@ -1,10 +1,17 @@
-
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #66635b;
     overflow: hidden;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #1F262D 0%,
+        #191F24 50%,
+        #171B20 75%,
+        #14181C 100%
+    );
 }
 
 
@@ -144,11 +151,6 @@ dialog h3 {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('/images/img.png');
-    background-size: cover;
-    background-position: center;
     color: white;
     display: flex;
     flex-direction: column;
@@ -165,9 +167,9 @@ dialog h3 {
     right: 20px;
 }
 
-.button-group button {
-    background-color: #c90420;
-    color: white;
+.login-button button {
+    background: #292A2F;
+    color: #EAE4E4;
     border: none;
     padding: 10px 20px;
     margin-left: 10px;
@@ -175,10 +177,11 @@ dialog h3 {
     cursor: pointer;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    font-weight: 700;
 }
 
-.button-group button:hover {
-    background-color: #c90420;
+.login-button button:hover {
+    background-color: #6c6fb0;
     transform: scale(1.05);
 }
 
@@ -199,7 +202,8 @@ dialog h3 {
 
 #create-account {
     background-color: #dd0426;
-    color: white;
+    background: #292A2F;
+    color: #EAE4E4;
     padding: 12px 24px;
     font-size: 1em;
     border: none;
@@ -209,10 +213,8 @@ dialog h3 {
     transition: transform 0.3s ease, background-color 0.3s ease;
     font-weight: 700;
 }
-#login{
-font-weight: 700;
-}
+
 #create-account:hover {
-    background-color: #c90420;
+    background-color: #6c6fb0;
     transform: scale(1.05);
 }
