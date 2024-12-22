@@ -201,25 +201,24 @@ function showError(message) {
 }
 
 function addToFavorite() {
-
     const url = new URL(window.location.href);
     const path = url.pathname;
     const movieId = path.split('/')[2];
 
-
     const title = document.querySelector("#movie-summary h2").textContent.trim();
-
     const posterUrl = document.querySelector("#movie-poster img").src;
     const posterPath = posterUrl.replace("https://image.tmdb.org/t/p/w500/", "");
 
     console.log("Adding to favorites:", { movieId, title, posterPath });
-
 
     const payload = {
         movieId: movieId,
         title: title,
         posterPath: posterPath
     };
+
+    const favoriteContainer = document.getElementById("favorite-container");
+    const errorMessageDiv = document.getElementById("favorite-error-message");
 
     fetch(`/api/movie/${movieId}/favorite`, {
         method: 'POST',
@@ -230,15 +229,21 @@ function addToFavorite() {
     })
     .then(response => {
         if (response.ok) {
-            // Actualiza la clase del contenedor y el texto
-            const favoriteContainer = document.getElementById("favorite-container");
             favoriteContainer.classList.add("favorited");
             favoriteContainer.querySelector("span").textContent = "Unmark as Favorite";
+            errorMessageDiv.classList.add("hidden");
+            errorMessageDiv.textContent = "";
         } else {
-            throw new Error('Failed to mark as favorite.');
+            return response.json().then(data => {
+                throw new Error(data.message || 'Failed to mark as favorite.');
+            });
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        errorMessageDiv.textContent = error.message;
+        errorMessageDiv.classList.remove("hidden");
+        console.error('Error:', error);
+    });
 }
 
 function removeFromFavorite() {

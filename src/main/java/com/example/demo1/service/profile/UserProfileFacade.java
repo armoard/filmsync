@@ -72,8 +72,8 @@ public class UserProfileFacade {
         userProfileUpdateService.editUsername(username);
     }
 
-    public void editAboutMe(String aboutMe) {
-        userProfileUpdateService.editAboutme(aboutMe);
+    public void editAboutMe(String aboutMe,String username) {
+        userProfileUpdateService.editAboutMe(aboutMe,username);
     }
 
     public void updateProfilePicture(String url) {

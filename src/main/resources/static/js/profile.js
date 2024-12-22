@@ -85,8 +85,6 @@ function saveUsername() {
     const messageContainer = document.getElementById('username-message');
     const newUsername = usernameInput.value;
 
-    console.log("Sending username to server:", newUsername);
-
     fetch(`/api/user/edit/username/${newUsername.trim()}`, {
         method: 'PUT',
         headers: {
@@ -143,12 +141,17 @@ function saveAboutMe() {
     const messageContainer = document.getElementById('about-me-message');
     const updatedAbout = input.value.trim();
 
+    const username = document.getElementById('username-display').textContent.trim();
+
+    const requestBody = { aboutme: updatedAbout, username: username };
+    console.log("Data sent to the server:", requestBody);
+
     fetch('/api/user/edit/about-me', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ aboutme: updatedAbout }),
+        body: JSON.stringify(requestBody),
     })
     .then(response => {
         if (response.ok) {
@@ -172,6 +175,7 @@ function saveAboutMe() {
         messageContainer.classList.add('error');
     });
 }
+
 
 function handleComment(button) {
     const reviewContainer = button.closest('.review-container');

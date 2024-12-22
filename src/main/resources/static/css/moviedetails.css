@@ -180,9 +180,11 @@ form {
     display: block;
 }
 
-#error-message {
-    margin: 0;
-    padding: 0;
+.error-message {
+    color: #ff0000 !important;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 #friends-reviews {
@@ -208,20 +210,20 @@ form {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #friends-reviews li {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    border: none;
-    padding: 10px;
-    margin: 0;
-    width: 300px;
+    align-items: flex-start;
+    gap: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 
 
 .author-info {
@@ -231,6 +233,7 @@ form {
     text-align: center;
     flex-shrink: 0;
     margin-right: 10px;
+    width: 60px;
 }
 
 .author-info p {
@@ -238,7 +241,9 @@ form {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 80px;
+    max-width: 60px;
+    font-size: 0.9em;
+    margin: 0;
 }
 
 .author-info .profile-pic {
@@ -250,30 +255,33 @@ form {
 }
 
 
-#friends-reviews p {
-    margin: 2px 0;
-    font-size: 0.8em;
-}
-
-
-.rating {
-
-    font-weight: bold;
-    color: #ffcc66;
-}
-
-
-#friends-reviews li > p {
+#friends-reviews li > .review-content p {
     text-align: left;
-    margin-left: 5px;
+    margin: 0;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
-    max-width: 200px;
-    line-height: 1.2em;
+    line-height: 1.4em;
+    font-size: 0.9em;
+}
+
+
+.rating {
+    font-weight: bold;
+    color: #ffcc66;
+}
+
+
+#friends-reviews li > .review-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    max-width: calc(100% - 80px);
 }
 
 .hidden {

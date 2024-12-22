@@ -37,8 +37,9 @@ public class ProfileApiController {
 
     @PutMapping("/edit/about-me")
     public ResponseEntity<Map<String, String>> submitProfileEdit(@RequestBody Map<String, String> requestBody) {
+        String username = requestBody.get("username");
         String aboutme = requestBody.get("aboutme");
-        userProfileFacade.editAboutMe(aboutme);
+        userProfileFacade.editAboutMe(aboutme, username);
         return ResponseEntity.ok(Map.of("message", "About-me updated successfully."));
     }
 

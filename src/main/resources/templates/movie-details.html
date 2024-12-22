@@ -17,6 +17,7 @@
          th:classappend="${movieState.isFavorite} ? 'favorited' : ''">
         <i class="fa-solid fa-heart"></i>
         <span th:text="${movieState.isFavorite} ? 'Unmark as Favorite' : 'Mark as Favorite'"></span>
+        <div id="favorite-error-message" class="error-message hidden"></div>
     </div>
 </div>
 
