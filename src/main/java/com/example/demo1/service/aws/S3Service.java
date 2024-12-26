@@ -12,6 +12,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.core.sync.RequestBody;
 
 import java.io.InputStream;
+import java.net.URI;
 
 @Service
 public class S3Service {
@@ -38,8 +39,9 @@ public class S3Service {
 
         // delete current profile picture from bucket
         if (currentProfileUrl != null && !currentProfileUrl.equals(defaultProfileUrl)) {
-            String currentKey = currentProfileUrl.substring(currentProfileUrl.indexOf("profile-pictures/"));
             try {
+                URI uri = new URI(currentProfileUrl);
+                String currentKey = uri.getPath().substring(1);
                 s3Client.deleteObject(DeleteObjectRequest.builder()
                         .bucket(bucketName)
                         .key(currentKey)
